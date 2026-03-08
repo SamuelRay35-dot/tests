@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ServerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-02-26T02:54:54.518Z" hostname="SAM-LAPTOP" time="0.1">
+  <properties/>
+  <testcase name="addRequest" classname="ServerTest" time="0.082"/>
+  <testcase name="analyzer" classname="ServerTest" time="0.003"/>
+  <testcase name="echoRequest" classname="ServerTest" time="0.004"/>
+  <testcase name="concatenationRequest" classname="ServerTest" time="0.003"/>
+  <testcase name="notJSON" classname="ServerTest" time="0.006"/>
+  <system-out><![CDATA[{"ok":false,"message":"Field num2 does not exist in request"}
+{"ok":false,"message":"Field num1 does not exist in request"}
+{"ok":false,"message":"Field num1 does not exist in request"}
+{"ok":false,"type":"add","message":"Field num1/num2 needs to be of type: int"}
+{"ok":false,"message":"Field 'action' does not exist in request. Hint: what action do you want to perform?"}
+{"ok":false,"message":"Field data does not exist in request"}
+{"result":"helloworld","ok":true,"type":"stringconcatenation"}
+{"ok":false,"message":"Field num2 does not exist in request"}
+{"ok":false,"message":"Field num1 does not exist in request"}
+{"ok":false,"message":"Field num1 does not exist in request"}
+{"ok":false,"type":"add","message":"Field num1/num2 needs to be of type: int"}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

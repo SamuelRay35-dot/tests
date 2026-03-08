@@ -1,0 +1,10 @@
+?{"ok":false,"message":"Field num2 does not exist in request"}
+?{"ok":false,"message":"Field num1 does not exist in request"}
+?{"ok":false,"message":"Field num1 does not exist in request"}
+P{"ok":false,"type":"add","message":"Field num1/num2 needs to be of type: int"}
+?{"ok":false,"message":"Field data does not exist in request"}
+@{"result":"helloworld","ok":true,"type":"stringconcatenation"}
+?{"ok":false,"message":"Field num2 does not exist in request"}
+?{"ok":false,"message":"Field num1 does not exist in request"}
+?{"ok":false,"message":"Field num1 does not exist in request"}
+P{"ok":false,"type":"add","message":"Field num1/num2 needs to be of type: int"}
