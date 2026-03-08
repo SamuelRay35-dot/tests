@@ -297,7 +297,15 @@ public class SockServer {
       return toCheck;
     }
 
-    double amount = req.getDouble("amount");
+    double amount = 0;
+
+    try{
+      amount = req.getDouble("amount");
+    } catch(JSONException e) {
+      res.put("ok", false);
+      res.put("message", "Field 'amount' must be number");
+      return res;
+    }
     String from = req.getString("from").toUpperCase();
     String to = req.getString("to").toUpperCase();
 
@@ -318,6 +326,7 @@ public class SockServer {
       res.put("message", "Field 'amount' cannot be negative");
       return res;
     }
+
 
     double rate = 1.0;
     if (from.equals("USD") && to.equals("EUR")) {
