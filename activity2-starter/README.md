@@ -142,3 +142,10 @@ Server: Game over! Final results:
 - Follow the protocol specification exactly
 - Test with multiple concurrent clients
 - Make sure leaderboard persists across server restarts (uses `scores.txt`)
+
+## Design Challenges
+        Matching the code to the protocol and constantly getting errors was quite the challenge.
+
+## Known Issues
+        Not sure if a name can have multiple spots on the leaderboard and if bots were supposed to be added to said leaderboard. Logic works but response for items
+        and gold at the end of game is not working currently.

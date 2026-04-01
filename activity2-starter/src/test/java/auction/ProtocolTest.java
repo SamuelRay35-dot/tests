@@ -150,6 +150,83 @@ public class ProtocolTest {
     // ADD YOUR TESTS BELOW (at least 3 more tests required)
     // ====================================================================
 
+    /**
+     * Test 5: Leaderboard Request
+     * Server should return LEADERBOARD_RESPONSE when requested.
+     */
+    @Test
+    @Order(5)
+    public void testLeaderboard() throws IOException {
+        Response.parseDelimitedFrom(in);
+        sendRegister("LeaderboardTester");
+        sendJoin();
+
+        Response.parseDelimitedFrom(in);
+
+        Request leaderboardRequest = Request.newBuilder()
+            .setType(Request.RequestType.LEADERBOARD)
+            .build();
+        leaderboardRequest.writeDelimitedTo(out);
+
+        Response response = Response.parseDelimitedFrom(in);
+
+        assertNotNull(response);
+        assertEquals(Response.ResponseType.LEADERBOARD_RESPONSE, response.getType());
+        assertTrue(response.getOk());
+        assertTrue(response.hasLeaderboard(), "Leaderboard should be present");
+        assertNotNull(response.getLeaderboard());
+    }
+
+    /**
+     * Test 6: Join Request
+     * Server should return GAME_JOINED
+     */
+    @Test
+    @Order(6)
+    public void testJoin() throws IOException {
+        Response.parseDelimitedFrom(in);
+        sendRegister("JoinTester");
+        sendJoin();
+
+        Response response = Response.parseDelimitedFrom(in);
+
+        assertNotNull(response);
+        assertEquals(Response.ResponseType.GAME_JOINED, response.getType(), "Should return GAME_JOINED");
+        assertTrue(response.getOk(), "Join should succeed");
+        assertNotNull(response.getNextItem(), "Next item should be provided");
+        assertNotNull(response.getPlayerStatus(), "Player status should be provided");
+        assertEquals("JoinTester", response.getPlayerStatus().getPlayerName());
+    }
+
+    /**
+     * Test 7: Reserve Test
+     * Bid below reserve should be rejected
+     */
+    @Test
+    @Order(7)
+    public void testReservePrice() throws IOException {
+        Response.parseDelimitedFrom(in);
+        sendRegister("ReserveTester");
+        sendJoin();
+        Response joinResponse = Response.parseDelimitedFrom(in);
+        assertEquals(Response.ResponseType.GAME_JOINED, joinResponse.getType());
+
+        int itemId = joinResponse.getNextItem().getId();
+        int minValue = joinResponse.getNextItem().getMinValue();
+        int reservePrice = minValue / 2;
+        int lowBid = reservePrice - 1;
+
+        Request bidRequest = Request.newBuilder()
+            .setType(Request.RequestType.BID)
+            .setItemId(itemId)
+            .setBidAmount(lowBid)
+            .build();
+        bidRequest.writeDelimitedTo(out);
+        Response response = Response.parseDelimitedFrom(in);
+        assertNotNull(response);
+        assertEquals(Response.ResponseType.ERROR, response.getType(), "Bid below reserve should fail");
+        assertFalse(response.getOk(), "Response should indicate failure");
+    }
 
 
     // Helper methods if you want to use them
