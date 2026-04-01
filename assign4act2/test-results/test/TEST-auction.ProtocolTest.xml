@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="auction.ProtocolTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-04-01T03:39:16.188Z" hostname="SAMSPC" time="0.175">
+  <properties/>
+  <testcase name="testInitialWelcome()" classname="auction.ProtocolTest" time="0.117"/>
+  <testcase name="testRegisterRequestValid()" classname="auction.ProtocolTest" time="0.018"/>
+  <testcase name="testRegisterRequestEmpty()" classname="auction.ProtocolTest" time="0.002"/>
+  <testcase name="testQuitRequest()" classname="auction.ProtocolTest" time="0.001"/>
+  <testcase name="testLeaderboard()" classname="auction.ProtocolTest" time="0.026"/>
+  <testcase name="testJoin()" classname="auction.ProtocolTest" time="0.003"/>
+  <testcase name="testReservePrice()" classname="auction.ProtocolTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
