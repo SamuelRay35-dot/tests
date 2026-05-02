@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "service";
+import "google/protobuf/empty.proto";
+option java_outer_classname = "RiddleProto";
+
+package services;
+
+service Riddle {
+  rpc getRiddle (google.protobuf.Empty) returns (RiddleQues) {}
+  rpc answerRiddle (RiddleAnswer) returns (RiddleResult) {}
+  rpc addRiddle (AddRiddleRequest) returns (AddRiddleResponse) {}
+}
+
+message RiddleQues {
+  string riddle = 1;
+}
+
+message RiddleAnswer {
+  string answer = 1;
+}
+
+message RiddleResult {
+  bool isCorrect = 1;
+  string message = 2;
+}
+
+message AddRiddleRequest {
+  string riddle = 1;
+  string answer = 2;
+}
+
+message AddRiddleResponse {
+  bool success = 1;
+  string message = 2;
+}
